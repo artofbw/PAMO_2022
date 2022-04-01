@@ -1,3 +1,3 @@
-# PAMO_2022
+# android-activities
 
-Autor: Łukasz Ćwikliński s19334
+autor: Łukasz Ćwikliński s19334

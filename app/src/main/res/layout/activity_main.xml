@@ -1,84 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context=".MainActivity"
-    android:columnCount="2"
-    android:useDefaultMargins="true">
+    android:paddingTop="?attr/actionBarSize">
 
-    <EditText
-        android:layout_width="wrap_content"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:inputType="number"
-        android:id="@+id/weightEditText"
-        android:layout_column="0"
-        android:digits="0123456789"
-        android:maxLength="6"
-        android:ems="10"
-        android:layout_columnSpan="2"/>
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:background="?android:attr/windowBackground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:menu="@menu/bottom_nav_menu" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:id="@+id/weightTextView"
-        android:layout_row="0"
-        android:layout_column="0"
-        android:layout_columnSpan="2"
-        android:hint="@string/enter_weight"
-        android:layout_gravity="fill_horizontal"
-        android:background="@color/amount_background"
-        android:padding="@dimen/textview_padding"
-        android:elevation="@dimen/elevation"/>
+    <fragment
+        android:id="@+id/nav_host_fragment_activity_main"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:defaultNavHost="true"
+        app:layout_constraintBottom_toTopOf="@id/nav_view"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navGraph="@navigation/mobile_navigation" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:id="@+id/heightEditText"
-        android:layout_column="0"
-        android:digits="0123456789"
-        android:maxLength="6"
-        android:ems="10"
-        android:layout_columnSpan="2"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:id="@+id/heightTextView"
-        android:layout_row="1"
-        android:layout_column="0"
-        android:layout_columnSpan="2"
-        android:hint="@string/enter_height"
-        android:layout_gravity="fill_horizontal"
-        android:background="@color/amount_background"
-        android:padding="@dimen/textview_padding"
-        android:elevation="@dimen/elevation"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/result"
-        android:id="@+id/resultLabelTextView"
-        android:layout_gravity="right"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:id="@+id/resultTextView"
-        android:layout_gravity="fill_horizontal"
-        android:background="@color/result_background"
-        android:gravity="center"
-        android:padding="@dimen/textview_padding"
-        android:elevation="@dimen/elevation"/>
-
-</GridLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
