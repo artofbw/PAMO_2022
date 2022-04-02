@@ -11,4 +11,7 @@
     <string name="kcal">Your BMR:</string>
     <string name="bmi_value">0</string>
     <string name="kcal_value">0</string>
+    <string name="male">male</string>
+    <string name="female">female</string>
+    <string name="selectSex">Select Sex</string>
 </resources>
