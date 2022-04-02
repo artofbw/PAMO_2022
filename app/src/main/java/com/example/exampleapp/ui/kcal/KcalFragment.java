@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -28,6 +29,7 @@ public class KcalFragment extends Fragment {
 
     private double weight = 0.0; // weight entered by the user
     private double height = 0.0; // height entered by the user
+    private int sex; // sex selected by the user
     private int age = 0; // age entered by the user
 
     // called when the activity is first created
@@ -37,6 +39,8 @@ public class KcalFragment extends Fragment {
 
         binding = FragmentKcalBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
+        sex = binding.sex.getCheckedRadioButtonId();
 
         // set heightEditText's TextWatcher
         EditText heightEditText =
@@ -53,15 +57,26 @@ public class KcalFragment extends Fragment {
                 (EditText) binding.ageEditNumber;
         ageEditText.addTextChangedListener(ageEditTextWatcher);
 
+        // sex selection check change listener
+        RadioGroup radioGroup = (RadioGroup) binding.sex;
+        radioGroup.setOnCheckedChangeListener((group, checkedId) -> {
+            sex = checkedId;
+            calculate(); // update the result
+        });
+
         return root;
     }
 
     // calculate and display BMR
     private void calculate() {
-//        BMR = 66.5 + (13.75 * weight in kg) + (5.003 * height in cm) - (6.75 * age)
         if (weight > 0 && height > 0 && age > 0) {
+            double result;
             // calculate the BMR
-            double result = 66.5 + (13.75 * weight) + (5.003 * height) - (6.75 * age);
+            if (sex == binding.male.getId()) {
+                result = 66.5 + (13.75 * weight) + (5.003 * height) - (6.775 * age);
+            } else {
+                result = 655.1 + (9.563 * weight) + (1.85 * height) - (4.676 * age);
+            }
 
             // display result formatted as a number
             setText(resultFormat.format(result));

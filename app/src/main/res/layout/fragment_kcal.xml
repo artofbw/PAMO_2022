@@ -64,10 +64,43 @@
             android:text="@string/enter_weight" />
 
         <TextView
-            android:id="@+id/kcalLabelTextView"
+            android:id="@+id/sexLabelTextView"
             android:layout_width="126dp"
             android:layout_height="wrap_content"
             android:layout_row="3"
+            android:layout_column="0"
+            android:text="@string/selectSex" />
+
+
+        <RadioGroup
+            android:id="@+id/sex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="3"
+            android:layout_column="1"
+            android:orientation="horizontal"
+            >
+
+            <RadioButton
+                android:id="@+id/male"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/male"
+                android:checked="true"
+                />
+
+            <RadioButton
+                android:id="@+id/female"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/female" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/kcalLabelTextView"
+            android:layout_width="126dp"
+            android:layout_height="wrap_content"
+            android:layout_row="4"
             android:layout_column="0"
             android:text="@string/kcal"
             android:textStyle="bold" />
@@ -85,7 +118,7 @@
             android:id="@+id/kcalTextView"
             android:layout_width="105dp"
             android:layout_height="29dp"
-            android:layout_row="3"
+            android:layout_row="4"
             android:layout_column="1"
             android:text="@string/kcal_value"
             android:textAlignment="textEnd" />
