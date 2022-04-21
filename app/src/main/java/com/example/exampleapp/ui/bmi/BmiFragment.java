@@ -12,12 +12,23 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.anychart.AnyChart;
+import com.anychart.AnyChartView;
+import com.anychart.chart.common.dataentry.DataEntry;
+import com.anychart.chart.common.dataentry.ValueDataEntry;
+import com.anychart.charts.Pie;
 import com.example.exampleapp.databinding.FragmentBmiBinding;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BmiFragment extends Fragment {
+
+
+    // Anychart PieChart
+    AnyChartView anyChartView;
 
     private FragmentBmiBinding binding;
     // result formatter objects
@@ -46,7 +57,22 @@ public class BmiFragment extends Fragment {
                 (EditText) binding.weightEditNumber;
         weightEditText.addTextChangedListener(weightEditTextWatcher);
 
+        anyChartView = binding.anyChartview;
+
         return root;
+    }
+
+    // setup pie chart
+    public void setupPieChart() {
+        Pie pie = AnyChart.pie();
+
+        List<DataEntry> dataEntryList = new ArrayList<>();
+
+        dataEntryList.add(new ValueDataEntry("Weight", weight));
+        dataEntryList.add(new ValueDataEntry("Height", height));
+
+        pie.data(dataEntryList);
+        anyChartView.setChart(pie);
     }
 
     // calculate and display BMI
@@ -56,7 +82,8 @@ public class BmiFragment extends Fragment {
             double result = (weight / ((height / 100) * (height / 100)));
 
             // display result formatted as a number
-            setText(resultFormat.format(result));;
+            setText(resultFormat.format(result));
+            setupPieChart();
         } else {
             setText("");
         }

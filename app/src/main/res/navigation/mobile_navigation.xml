@@ -27,4 +27,10 @@
         android:name="com.example.exampleapp.ui.recipes.RecipesFragment"
         android:label="@string/title_recipes"
         tools:layout="@layout/fragment_recipes" />
+
+    <fragment
+        android:id="@+id/navigation_quiz"
+        android:name="com.example.exampleapp.ui.quiz.QuizFragment"
+        android:label="@string/title_quiz"
+        tools:layout="@layout/fragment_quiz" />
 </navigation>

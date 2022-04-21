@@ -20,4 +20,9 @@
         android:icon="@drawable/ic_baseline_food_bank_24"
         android:title="@string/title_recipes" />
 
+    <item
+        android:id="@+id/navigation_quiz"
+        android:icon="@drawable/ic_baseline_question_answer_24"
+        android:title="@string/title_quiz" />
+
 </menu>

@@ -72,5 +72,12 @@
             android:text="@string/bmi_value"
             android:textAlignment="textEnd" />
 
+        <com.anychart.AnyChartView
+            android:id="@+id/anyChartview"
+            android:layout_width="188dp"
+            android:layout_height="220dp"
+            android:layout_row="3"
+            android:layout_column="0" />
+
     </GridLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
